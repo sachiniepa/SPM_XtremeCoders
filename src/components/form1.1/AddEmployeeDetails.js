@@ -8,19 +8,23 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import axios from "axios";
 
-class AddStudentDetails extends Component {
+class AddEmployeeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ITNo: "",
       name: "",
       address: "",
-      homeNo: "",
-      mobileNo: "",
-      email: "",
-      semester: "",
-      year: "",
-      cgpa: "",
+      supName: "",
+      supTitle: "",
+      supPhone: "",
+      supEmail: "",
+      startDate: "",
+      endDate: "",
+      noOfHours: "",
+      tasks: "",
+      outcome: "",
+      Ext_Sup_Name: "",
+      Date: "",
     };
 
     this.onChange = this.onChange.bind(this);
@@ -28,32 +32,34 @@ class AddStudentDetails extends Component {
 
     this.onChangeSpinnerSem = this.onChangeSpinnerSem.bind(this);
     this.onChangeSpinnerYear = this.onChangeSpinnerYear.bind(this);
-    this.onChangeSpinnerCgpa = this.onChangeSpinnerCgpa.bind(this);
-
   }
 
   onSubmit(e) {
     e.preventDefault();
 
     const studentData = {
-      ITNo: this.state.ITNo,
       name: this.state.name,
       address: this.state.address,
-      homeNo: this.state.homeNo,
-      mobileNo: this.state.mobileNo,
-      email: this.state.email,
-      semester: this.state.semester,
-      year: this.state.year,
-      cgpa: this.state.cgpa
+      supName: this.state.supName,
+      supTitle: this.state.supTitle,
+      supPhone: this.state.supPhone,
+      supEmail: this.state.supEmail,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      noOfHours: this.state.noOfHours,
+      tasks: this.state.tasks,
+      outcome: this.state.outcome,
+      Ext_Sup_Name: this.state.Ext_Sup_Name,
+      Date: this.state.Date,
     };
 
     // Add Student details
     console.log("sss" + studentData);
     axios
-      .post("http://localhost:8083/student/", studentData)
+      .post("http://localhost:8083/drug/batch", studentData)
       .then(res => {
         console.log(studentData);
-        alert("Registration Completed");
+        alert("batch Added");
 
         this.setState({
           ITNo: "",
@@ -63,8 +69,7 @@ class AddStudentDetails extends Component {
           mobileNo: "",
           email: "",
           semester: "",
-          year: "",
-          cgpa: "",
+          year: ""
         });
       })
       .catch(err => {
@@ -84,11 +89,6 @@ class AddStudentDetails extends Component {
   onChangeSpinnerYear(num) {
     this.setState({
       year: num
-    });
-  }
-  onChangeSpinnerCgpa(num) {
-    this.setState({
-      cgpa: num
     });
   }
 
@@ -128,13 +128,6 @@ class AddStudentDetails extends Component {
                   onChange={this.onChange}
                   info="Mobile No"
                 />
-                  <FormatedTextField
-                      placeholder="Mobile No"
-                      name="homeNo"
-                      value={this.state.homeNo}
-                      onChange={this.onChange}
-                      info="Home No"
-                  />
                 <FormatedTextField
                   placeholder="E-mail"
                   name="email"
@@ -160,15 +153,6 @@ class AddStudentDetails extends Component {
                   onChange={this.onChangeSpinnerYear}
                 />
 
-                <small className="form-text text-muted">CGPA</small>
-                <NumericInput
-                  name="cgpa"
-                  min={0}
-                  max={4}
-                  value={this.state.cgpa}
-                  onChange={this.onChangeSpinnerCgpa}
-                />
-
                 <input
                   type="submit"
                   value="Submit"
@@ -184,4 +168,4 @@ class AddStudentDetails extends Component {
   }
 }
 
-export default AddStudentDetails;
+export default AddEmployeeDetails;
