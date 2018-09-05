@@ -20,7 +20,7 @@ class AddStudentDetails extends Component {
       email: "",
       semester: "",
       year: "",
-      cgpa: "",
+      cgpa: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -29,7 +29,6 @@ class AddStudentDetails extends Component {
     this.onChangeSpinnerSem = this.onChangeSpinnerSem.bind(this);
     this.onChangeSpinnerYear = this.onChangeSpinnerYear.bind(this);
     this.onChangeSpinnerCgpa = this.onChangeSpinnerCgpa.bind(this);
-
   }
 
   onSubmit(e) {
@@ -53,7 +52,7 @@ class AddStudentDetails extends Component {
       .post("http://localhost:8083/student/", studentData)
       .then(res => {
         console.log(studentData);
-        alert("student Added");
+        alert("Student Details submited");
 
         this.setState({
           ITNo: "",
@@ -64,7 +63,7 @@ class AddStudentDetails extends Component {
           email: "",
           semester: "",
           year: "",
-          cgpa: "",
+          cgpa: ""
         });
       })
       .catch(err => {
@@ -128,13 +127,13 @@ class AddStudentDetails extends Component {
                   onChange={this.onChange}
                   info="Mobile No"
                 />
-                  <FormatedTextField
-                      placeholder="Mobile No"
-                      name="homeNo"
-                      value={this.state.homeNo}
-                      onChange={this.onChange}
-                      info="Home No"
-                  />
+                <FormatedTextField
+                  placeholder="Mobile No"
+                  name="homeNo"
+                  value={this.state.homeNo}
+                  onChange={this.onChange}
+                  info="Home No"
+                />
                 <FormatedTextField
                   placeholder="E-mail"
                   name="email"
