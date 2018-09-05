@@ -18,6 +18,7 @@ class Landing extends Component {
                     Login
                   </a>
                 </Link>
+      
               </div>
             </div>
           </div>
