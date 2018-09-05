@@ -50,7 +50,7 @@ class AddStudentDetails extends Component {
     // Add Student details
     console.log("sss" + studentData);
     axios
-      .post("http://localhost:8083/student", studentData)
+      .post("http://localhost:8083/student/", studentData)
       .then(res => {
         console.log(studentData);
         alert("student Added");
@@ -128,6 +128,13 @@ class AddStudentDetails extends Component {
                   onChange={this.onChange}
                   info="Mobile No"
                 />
+                  <FormatedTextField
+                      placeholder="Mobile No"
+                      name="homeNo"
+                      value={this.state.homeNo}
+                      onChange={this.onChange}
+                      info="Home No"
+                  />
                 <FormatedTextField
                   placeholder="E-mail"
                   name="email"
