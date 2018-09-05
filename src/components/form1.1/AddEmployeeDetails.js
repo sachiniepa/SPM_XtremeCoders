@@ -30,14 +30,14 @@ class AddEmployeeDetails extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.onChangeSpinnerSem = this.onChangeSpinnerSem.bind(this);
-    this.onChangeSpinnerYear = this.onChangeSpinnerYear.bind(this);
+    this.onChangeSpinnerHrs = this.onChangeSpinnerHrs.bind(this);
+   
   }
 
   onSubmit(e) {
     e.preventDefault();
 
-    const studentData = {
+    const EmployeeData = {
       name: this.state.name,
       address: this.state.address,
       supName: this.state.supName,
@@ -53,23 +53,28 @@ class AddEmployeeDetails extends Component {
       Date: this.state.Date,
     };
 
-    // Add Student details
-    console.log("sss" + studentData);
+    // Add Employee details
+    console.log("sss" + EmployeeData);
     axios
-      .post("http://localhost:8083/drug/batch", studentData)
+      .post("http://localhost:8083/employee", EmployeeData)
       .then(res => {
-        console.log(studentData);
-        alert("batch Added");
+        console.log(EmployeeData);
+        alert("employeeData Added");
 
         this.setState({
-          ITNo: "",
-          name: "",
-          address: "",
-          homeNo: "",
-          mobileNo: "",
-          email: "",
-          semester: "",
-          year: ""
+         name: "",
+         address: "",
+         supName: "",
+         supTitle: "",
+         supPhone: "",
+         supEmail: "",
+         startDate: "",
+         endDate: "",
+         noOfHours: "",
+         tasks: "",
+         outcome: "",
+         Ext_Sup_Name: "",
+         Date: "",
         });
       })
       .catch(err => {
@@ -81,16 +86,12 @@ class AddEmployeeDetails extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onChangeSpinnerSem(num) {
+  onChangeSpinnerHrs(num) {
     this.setState({
-      semester: num
+      noOfHours: num
     });
   }
-  onChangeSpinnerYear(num) {
-    this.setState({
-      year: num
-    });
-  }
+ 
 
   render() {
     return (
@@ -98,15 +99,8 @@ class AddEmployeeDetails extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-left">Form 1-1:Student Details</h1>
+              <h1 className="display-4 text-left">Form 1-1:Employee Details</h1>
               <form>
-                <FormatedTextField
-                  placeholder="Registration Number"
-                  name="ITNo"
-                  value={this.state.ITNo}
-                  onChange={this.onChange}
-                  info="Registration Number"
-                />
                 <FormatedTextField
                   placeholder="Name"
                   name="name"
@@ -122,36 +116,86 @@ class AddEmployeeDetails extends Component {
                   info="Address"
                 />
                 <FormatedTextField
-                  placeholder="Mobile No"
-                  name="mobileNo"
-                  value={this.state.mobileNo}
+                  placeholder="Supervisor's Name"
+                  name="supName"
+                  value={this.state.supName}
                   onChange={this.onChange}
-                  info="Mobile No"
+                  info="Supervisor's Name"
                 />
                 <FormatedTextField
-                  placeholder="E-mail"
-                  name="email"
-                  value={this.state.email}
+                  placeholder="Supervisor's Title"
+                  name="supTitle"
+                  value={this.state.supTitle}
                   onChange={this.onChange}
-                  info="E-mail"
+                  info="Supervisor's Title"
+                />
+                <FormatedTextField
+                  placeholder="Supervisor's Phone"
+                  name="supPhone"
+                  value={this.state.supPhone}
+                  onChange={this.onChange}
+                  info="Supervisor's Phone"
+                />
+                 <FormatedTextField
+                  placeholder="Supervisor's Email"
+                  name="supEmail"
+                  value={this.state.supEmail}
+                  onChange={this.onChange}
+                  info="Supervisor's Email"
+                />
+                 <FormatedTextField
+                  placeholder="Internship Start Date"
+                  name="startDate"
+                  value={this.state.startDate}
+                  onChange={this.onChange}
+                  info="Internship Start Date"
+                />
+                 <FormatedTextField
+                  placeholder="Internship End Date"
+                  name="endDate"
+                  value={this.state.endDate}
+                  onChange={this.onChange}
+                  info="Internship End Date"
                 />
 
-                <small className="form-text text-muted">Semester</small>
+                <small className="form-text text-muted">No of Hours/Weeks</small>
                 <NumericInput
-                  name="semester"
-                  min={1}
-                  max={3}
-                  value={this.state.semester}
-                  onChange={this.onChangeSpinnerSem}
-                />
-                <small className="form-text text-muted">Year</small>
-                <NumericInput
-                  name="year"
+                  name="noOfHours"
                   min={0}
-                  max={2018}
-                  value={this.state.year}
-                  onChange={this.onChangeSpinnerYear}
+                  max={10}
+                  value={this.state.noOfHours}
+                  onChange={this.onChangeSpinnerHrs}
                 />
+
+                 <FormatedTextField
+                  placeholder="Please list the tasks the student is expected to complete"
+                  name="tasks"
+                  value={this.state.tasks}
+                  onChange={this.onChange}
+                  info="tasks"
+                />
+                 <FormatedTextField
+                  placeholder="List what the student will learn during the internship period"
+                  name="outcome"
+                  value={this.state.outcome}
+                  onChange={this.onChange}
+                  info="outcome"
+                />
+                 <FormatedTextField
+                  placeholder="External Supervisor's Name"
+                  name="Ext_Sup_Name"
+                  value={this.state.Ext_Sup_Name}
+                  onChange={this.onChange}
+                  info="External Supervisor's Name"
+                />
+                 <FormatedTextField
+                  placeholder="Date"
+                  name="Date"
+                  value={this.state.Date}
+                  onChange={this.onChange}
+                  info="Date"
+                />
+           
 
                 <input
                   type="submit"

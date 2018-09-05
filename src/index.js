@@ -9,6 +9,7 @@ import Navbar from "./components/Layout/Navbar";
 import Footer from "./components/Layout/Footer";
 import Sidebar from "./components/Layout/Sidebar";
 import AddStudent from "./components/form1.1/AddStudentDetails";
+import AddEmployee from "./components/form1.1/AddEmployeeDetails";
 ReactDOM.render(
   <BrowserRouter>
     <div>
@@ -27,6 +28,26 @@ ReactDOM.render(
                 </div>
                 <div className="col-md-8">
                   <AddStudent />
+                </div>
+              </div>
+              <Footer />
+            </div>
+          );
+        }}
+      />
+        <Route
+        exact
+        path="/addEmployee"
+        render={() => {
+          return (
+            <div>
+              <Navbar />
+              <div className="row">
+                <div className="col-md-3">
+                  <Sidebar />
+                </div>
+                <div className="col-md-8">
+                  <AddEmployee />
                 </div>
               </div>
               <Footer />

@@ -53,7 +53,7 @@ class AddStudentDetails extends Component {
       .post("http://localhost:8083/student", studentData)
       .then(res => {
         console.log(studentData);
-        alert("batch Added");
+        alert("student Added");
 
         this.setState({
           ITNo: "",
