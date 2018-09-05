@@ -50,7 +50,7 @@ class AddStudentDetails extends Component {
     // Add Student details
     console.log("sss" + studentData);
     axios
-      .post("http://localhost:8083/drug/batch", studentData)
+      .post("http://localhost:8083/student", studentData)
       .then(res => {
         console.log(studentData);
         alert("batch Added");
