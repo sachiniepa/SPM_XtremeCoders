@@ -10,6 +10,7 @@ import Footer from "./components/Layout/Footer";
 import Sidebar from "./components/Layout/Sidebar";
 import AddStudent from "./components/form1.1/AddStudentDetails";
 import AddEmployee from "./components/form1.1/AddEmployeeDetails";
+import ViewStudents from "./components/form1.1/ViewStudents";
 ReactDOM.render(
   <BrowserRouter>
     <div>
@@ -35,7 +36,7 @@ ReactDOM.render(
           );
         }}
       />
-        <Route
+      <Route
         exact
         path="/addEmployee"
         render={() => {
@@ -48,6 +49,26 @@ ReactDOM.render(
                 </div>
                 <div className="col-md-8">
                   <AddEmployee />
+                </div>
+              </div>
+              <Footer />
+            </div>
+          );
+        }}
+      />
+      <Route
+        exact
+        path="/viewStudents"
+        render={() => {
+          return (
+            <div>
+              <Navbar />
+              <div className="row">
+                <div className="col-md-3">
+                  <Sidebar />
+                </div>
+                <div className="col-md-8">
+                  <ViewStudents />
                 </div>
               </div>
               <Footer />

@@ -5,8 +5,9 @@ import FormatedList from "../common/FormatedList";
 import moment from "moment";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+//import Model from "./Modal";
 import axios from "axios";
+//import Modal from "../common/modal";
 
 class AddStudentDetails extends Component {
   constructor(props) {

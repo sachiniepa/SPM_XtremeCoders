@@ -6,7 +6,7 @@ class Sidebar extends Component {
       <div class="sidenav">
         <Link to="/addStudent">Form1-1:Student Details</Link>
         <Link to="/addEmployee">Form1-1:Employee Details</Link>
-        <Link to="/viewDrug">------</Link>
+        <Link to="/viewStudents">View Students</Link>
         <Link to="/viewBatch">------</Link>
       </div>
     );
