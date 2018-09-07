@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import NumericInput from "react-numeric-input";
 import FormatedTextField from "../common/FormatedTextField";
-import FormatedList from "../common/FormatedList";
-import moment from "moment";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-//import Model from "./Modal";
 import axios from "axios";
-//import Modal from "../common/modal";
-
+import { RadioGroup, Radio } from "react-radio-group";
 class AddStudentDetails extends Component {
   constructor(props) {
     super(props);
@@ -21,15 +15,31 @@ class AddStudentDetails extends Component {
       email: "",
       semester: "",
       year: "",
-      cgpa: ""
+      cgpa: "",
+      empEmail: ""
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.onChangeSpinnerSem = this.onChangeSpinnerSem.bind(this);
-    this.onChangeSpinnerYear = this.onChangeSpinnerYear.bind(this);
+    this.handleChangeSem = this.handleChangeSem.bind(this);
+    this.handleChangeYear = this.handleChangeYear.bind(this);
     this.onChangeSpinnerCgpa = this.onChangeSpinnerCgpa.bind(this);
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8083/student/")
+      .then(Response => {
+        var data = Response.data.data;
+        this.setState({
+          data: data
+        });
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   onSubmit(e) {
@@ -44,7 +54,8 @@ class AddStudentDetails extends Component {
       email: this.state.email,
       semester: this.state.semester,
       year: this.state.year,
-      cgpa: this.state.cgpa
+      cgpa: this.state.cgpa,
+      empEmail: this.state.empEmail
     };
 
     // Add Student details
@@ -64,7 +75,8 @@ class AddStudentDetails extends Component {
           email: "",
           semester: "",
           year: "",
-          cgpa: ""
+          cgpa: "",
+          empEmail: ""
         });
       })
       .catch(err => {
@@ -75,17 +87,17 @@ class AddStudentDetails extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  handleChangeYear(selectedValue) {
+    this.setState({
+      year: selectedValue
+    });
+  }
+  handleChangeSem(selectedValue) {
+    this.setState({
+      semester: selectedValue
+    });
+  }
 
-  onChangeSpinnerSem(num) {
-    this.setState({
-      semester: num
-    });
-  }
-  onChangeSpinnerYear(num) {
-    this.setState({
-      year: num
-    });
-  }
   onChangeSpinnerCgpa(num) {
     this.setState({
       cgpa: num
@@ -129,7 +141,7 @@ class AddStudentDetails extends Component {
                   info="Mobile No"
                 />
                 <FormatedTextField
-                  placeholder="Mobile No"
+                  placeholder="Home No"
                   name="homeNo"
                   value={this.state.homeNo}
                   onChange={this.onChange}
@@ -144,29 +156,54 @@ class AddStudentDetails extends Component {
                 />
 
                 <small className="form-text text-muted">Semester</small>
-                <NumericInput
+                <RadioGroup
                   name="semester"
-                  min={1}
-                  max={3}
-                  value={this.state.semester}
-                  onChange={this.onChangeSpinnerSem}
-                />
+                  selectedValue={this.state.semester}
+                  onChange={this.handleChangeSem}
+                >
+                  <label>
+                    <Radio value="1" />1
+                  </label>
+                  <label>
+                    <Radio value="2" />2
+                  </label>
+                </RadioGroup>
                 <small className="form-text text-muted">Year</small>
-                <NumericInput
+                <RadioGroup
                   name="year"
-                  min={0}
-                  max={2018}
-                  value={this.state.year}
-                  onChange={this.onChangeSpinnerYear}
-                />
+                  selectedValue={this.state.year}
+                  onChange={this.handleChangeYear}
+                >
+                  <label>
+                    <Radio value="1" />1
+                  </label>
+                  <label>
+                    <Radio value="2" />2
+                  </label>
+                  <label>
+                    <Radio value="3" />3
+                  </label>
+                  <label>
+                    <Radio value="4" />4
+                  </label>
+                </RadioGroup>
 
                 <small className="form-text text-muted">CGPA</small>
                 <NumericInput
                   name="cgpa"
                   min={0}
                   max={4}
+                  step={0.1}
+                  precision={1}
                   value={this.state.cgpa}
                   onChange={this.onChangeSpinnerCgpa}
+                />
+                <FormatedTextField
+                  placeholder="Employee E-mail"
+                  name="empEmail"
+                  value={this.state.empEmail}
+                  onChange={this.onChange}
+                  info="Employee E-mail"
                 />
 
                 <input
