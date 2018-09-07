@@ -9,6 +9,7 @@ class ViewStudents extends Component {
       data: []
     };
     this.onDelete = this.onDelete.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +26,6 @@ class ViewStudents extends Component {
         console.log(err);
       });
   }
-
   onDelete(e) {
     axios
       .delete("http://localhost:8083/student/" + e.target.id)
