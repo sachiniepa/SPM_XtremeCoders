@@ -6,7 +6,8 @@ class ViewStudents extends Component {
     super(props);
 
     this.state = {
-      data: []
+        data: [],
+        key: ""
     };
     this.onDelete = this.onDelete.bind(this);
   }
@@ -15,7 +16,7 @@ class ViewStudents extends Component {
     axios
       .get("http://localhost:8083/student/")
       .then(Response => {
-        var data = Response.data.data;
+        var data = Response.data;
         this.setState({
           data: data
         });
@@ -38,31 +39,70 @@ class ViewStudents extends Component {
       });
   }
 
-  render() {
-    const displayStudent = this.state.data.map(item => {
-      return (
-        <tr key={item._id}>
-          <td key={item._id}>{item.ITNo}</td>
-          <td key={item._id}>{item.name}</td>
-          <td key={item._id}>{item.email}</td>
-          <td key={item._id}>{item.semester}</td>
-          <td key={item._id}>{item.year}</td>
-          <td key={item._id}>{item.cgpa}</td>
+    onSearchChange(event){
+        event.preventDefault();
+        event.stopPropagation();
+        this.setState({key:event.target.value });
+        //this.searchKey = event.target.value;
+    }
 
-          <td>
-            <div className="btn-group">
-              <a
-                id={item._id}
-                value={item._id}
-                className="btn btn-danger"
-                onClick={this.onDelete}
-              >
-                Delete
-              </a>
-            </div>
-          </td>
-        </tr>
-      );
+
+    render() {
+    var displayStudent = this.state.data.map(item => {
+        let searchkey = new RegExp(this.state.key, "i");
+        console.log(searchkey);
+        if(this.state.key === ""){
+            console.log("No search key");
+            return (
+                <tr key={item._id}>
+                    <td key={item._id}>{item.ITNo}</td>
+                    <td key={item._id}>{item.name}</td>
+                    <td key={item._id}>{item.email}</td>
+                    <td key={item._id}>{item.semester}</td>
+                    <td key={item._id}>{item.year}</td>
+                    <td key={item._id}>{item.cgpa}</td>
+
+                    <td>
+                        <div className="btn-group">
+                            <a
+                                id={item._id}
+                                value={item._id}
+                                className="btn btn-danger"
+                                onClick={this.onDelete}
+                            >
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        } else if(item.ITNo.match(searchkey)){
+            console.log("Search key included");
+            return (
+                <tr key={item._id}>
+                    <td key={item._id}>{item.ITNo}</td>
+                    <td key={item._id}>{item.name}</td>
+                    <td key={item._id}>{item.email}</td>
+                    <td key={item._id}>{item.semester}</td>
+                    <td key={item._id}>{item.year}</td>
+                    <td key={item._id}>{item.cgpa}</td>
+
+                    <td>
+                        <div className="btn-group">
+                            <a
+                                id={item._id}
+                                value={item._id}
+                                className="btn btn-danger"
+                                onClick={this.onDelete}
+                            >
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
+
     });
 
     return (
@@ -75,7 +115,7 @@ class ViewStudents extends Component {
                 placeholder="Filter students by ID,Name,Email,Semester,Year or GPA"
                 name="ITNo"
                 value={this.state.ITNo}
-                onChange={this.onChange}
+                onChange={event => this.onSearchChange(event)}
                 info="Search"
               />
               <table className="table table-striped table-advance table-hover">
