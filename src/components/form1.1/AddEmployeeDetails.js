@@ -12,6 +12,7 @@ class AddEmployeeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      ITNo: "",
       name: "",
       address: "",
       supName: "",
@@ -25,19 +26,34 @@ class AddEmployeeDetails extends Component {
       outcome: "",
       Ext_Sup_Name: "",
       Date: "",
+      itData: []
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.onChangeSpinnerHrs = this.onChangeSpinnerHrs.bind(this);
-   
+  }
+  componentDidMount() {
+    axios
+      .get("http://localhost:8083/student/")
+      .then(Response => {
+        var data = Response.data;
+        this.setState({
+          itData: data
+        });
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   onSubmit(e) {
     e.preventDefault();
 
     const EmployeeData = {
+      ITNo: this.state.ITNo,
       name: this.state.name,
       address: this.state.address,
       supName: this.state.supName,
@@ -50,7 +66,7 @@ class AddEmployeeDetails extends Component {
       tasks: this.state.tasks,
       outcome: this.state.outcome,
       Ext_Sup_Name: this.state.Ext_Sup_Name,
-      Date: this.state.Date,
+      Date: this.state.Date
     };
 
     // Add Employee details
@@ -62,19 +78,20 @@ class AddEmployeeDetails extends Component {
         alert("employeeData Added");
 
         this.setState({
-         name: "",
-         address: "",
-         supName: "",
-         supTitle: "",
-         supPhone: "",
-         supEmail: "",
-         startDate: "",
-         endDate: "",
-         noOfHours: "",
-         tasks: "",
-         outcome: "",
-         Ext_Sup_Name: "",
-         Date: "",
+          ITNo: "",
+          name: "",
+          address: "",
+          supName: "",
+          supTitle: "",
+          supPhone: "",
+          supEmail: "",
+          startDate: "",
+          endDate: "",
+          noOfHours: "",
+          tasks: "",
+          outcome: "",
+          Ext_Sup_Name: "",
+          Date: ""
         });
       })
       .catch(err => {
@@ -91,9 +108,14 @@ class AddEmployeeDetails extends Component {
       noOfHours: num
     });
   }
- 
 
   render() {
+    const itNumbers = this.state.itData.map(item => {
+      return {
+        label: item.ITNo,
+        value: item.ITNo
+      };
+    });
     return (
       <div className="landing-inner">
         <div className="container">
@@ -101,6 +123,14 @@ class AddEmployeeDetails extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-left">Form 1-1:Employee Details</h1>
               <form>
+                <FormatedList
+                  placeholder="IT Number"
+                  name="ITNo"
+                  value={this.state.ITNo}
+                  onChange={this.onChange}
+                  options={itNumbers}
+                  info="IT Number"
+                />
                 <FormatedTextField
                   placeholder="Name"
                   name="name"
@@ -136,21 +166,21 @@ class AddEmployeeDetails extends Component {
                   onChange={this.onChange}
                   info="Supervisor's Phone"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="Supervisor's Email"
                   name="supEmail"
                   value={this.state.supEmail}
                   onChange={this.onChange}
                   info="Supervisor's Email"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="Internship Start Date"
                   name="startDate"
                   value={this.state.startDate}
                   onChange={this.onChange}
                   info="Internship Start Date"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="Internship End Date"
                   name="endDate"
                   value={this.state.endDate}
@@ -158,7 +188,9 @@ class AddEmployeeDetails extends Component {
                   info="Internship End Date"
                 />
 
-                <small className="form-text text-muted">No of Hours/Weeks</small>
+                <small className="form-text text-muted">
+                  No of Hours/Weeks
+                </small>
                 <NumericInput
                   name="noOfHours"
                   min={0}
@@ -167,35 +199,34 @@ class AddEmployeeDetails extends Component {
                   onChange={this.onChangeSpinnerHrs}
                 />
 
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="Please list the tasks the student is expected to complete"
                   name="tasks"
                   value={this.state.tasks}
                   onChange={this.onChange}
                   info="tasks"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="List what the student will learn during the internship period"
                   name="outcome"
                   value={this.state.outcome}
                   onChange={this.onChange}
                   info="outcome"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="External Supervisor's Name"
                   name="Ext_Sup_Name"
                   value={this.state.Ext_Sup_Name}
                   onChange={this.onChange}
                   info="External Supervisor's Name"
                 />
-                 <FormatedTextField
+                <FormatedTextField
                   placeholder="Date"
                   name="Date"
                   value={this.state.Date}
                   onChange={this.onChange}
                   info="Date"
                 />
-           
 
                 <input
                   type="submit"

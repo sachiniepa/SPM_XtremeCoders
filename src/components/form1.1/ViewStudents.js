@@ -190,7 +190,7 @@ class ViewStudents extends Component {
     axios
       .get("http://localhost:8083/student/")
       .then(res => {
-        var data = res.data.data;
+        var data = res.data;
         this.setState({
           data: data
         });
