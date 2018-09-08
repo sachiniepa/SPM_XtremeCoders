@@ -110,7 +110,8 @@ class AddStudentDetails extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-left">Form 1-1:Student Details</h1>
+              <h1 className="display-4 text-left">Student Details</h1>
+              <h2>Form I-1</h2>
               <form>
                 <FormatedTextField
                   placeholder="Registration Number"
@@ -209,6 +210,12 @@ class AddStudentDetails extends Component {
                 <input
                   type="submit"
                   value="Submit"
+                  className="btn btn-info btn-block mt-4"
+                  onClick={this.onSubmit}
+                />
+                <input
+                  type="update"
+                  value="update"
                   className="btn btn-info btn-block mt-4"
                   onClick={this.onSubmit}
                 />

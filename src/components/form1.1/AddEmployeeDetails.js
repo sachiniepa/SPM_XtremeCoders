@@ -121,7 +121,8 @@ class AddEmployeeDetails extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-left">Form 1-1:Employee Details</h1>
+              <h1 className="display-4 text-left">Employee Details</h1>
+              <h2>Form I-1</h2>
               <form>
                 <FormatedList
                   placeholder="IT Number"

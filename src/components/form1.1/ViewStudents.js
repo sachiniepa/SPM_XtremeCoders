@@ -233,7 +233,7 @@ class ViewStudents extends Component {
         <div className="row">
           <div className="col-lg-12">
             <section className="panel">
-              <h1 className="display-4 text-left">FORM1.1 Filled Students</h1>
+              <h1 className="display-4 text-left">FORM I-1 Filled Students</h1>
               <FormatedTextField
                 placeholder="Filter students by ID,Name,Email,Semester,Year or GPA"
                 name="ITNo"
