@@ -158,20 +158,7 @@ class AddEmployeeDetails extends Component {
                   onChange={this.onChange}
                   info="Supervisor's Title"
                 />
-                <FormatedTextField
-                  placeholder="Supervisor's Phone"
-                  name="supPhone"
-                  value={this.state.supPhone}
-                  onChange={this.onChange}
-                  info="Supervisor's Phone"
-                />
-                <FormatedTextField
-                  placeholder="Supervisor's Email"
-                  name="supEmail"
-                  value={this.state.supEmail}
-                  onChange={this.onChange}
-                  info="Supervisor's Email"
-                />
+               
                 <FormatedTextField
                   placeholder="Internship Start Date"
                   name="startDate"
@@ -179,13 +166,7 @@ class AddEmployeeDetails extends Component {
                   onChange={this.onChange}
                   info="Internship Start Date"
                 />
-                <FormatedTextField
-                  placeholder="Internship End Date"
-                  name="endDate"
-                  value={this.state.endDate}
-                  onChange={this.onChange}
-                  info="Internship End Date"
-                />
+               
 
                 <small className="form-text text-muted">
                   No of Hours/Weeks
@@ -219,13 +200,7 @@ class AddEmployeeDetails extends Component {
                   onChange={this.onChange}
                   info="External Supervisor's Name"
                 />
-                <FormatedTextField
-                  placeholder="Date"
-                  name="Date"
-                  value={this.state.Date}
-                  onChange={this.onChange}
-                  info="Date"
-                />
+               
 
                 <input
                   type="submit"
