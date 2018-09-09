@@ -17,15 +17,14 @@ class AddEmployeeDetails extends Component {
       address: "",
       supName: "",
       supTitle: "",
-      supPhone: "",
-      supEmail: "",
+      // supPhone: "",
+      // supEmail: "",
       startDate: "",
-      endDate: "",
+     // endDate: "",
       noOfHours: "",
-      tasks: "",
-      outcome: "",
-      Ext_Sup_Name: "",
-      Date: "",
+      expectedTasks: "",
+      tasksToBeLearned: "",
+      externalSup: "",
       itData: []
     };
 
@@ -58,21 +57,21 @@ class AddEmployeeDetails extends Component {
       address: this.state.address,
       supName: this.state.supName,
       supTitle: this.state.supTitle,
-      supPhone: this.state.supPhone,
-      supEmail: this.state.supEmail,
+      //supPhone: this.state.supPhone,
+      //supEmail: this.state.supEmail,
       startDate: this.state.startDate,
-      endDate: this.state.endDate,
+      //endDate: this.state.endDate,
       noOfHours: this.state.noOfHours,
-      tasks: this.state.tasks,
-      outcome: this.state.outcome,
-      Ext_Sup_Name: this.state.Ext_Sup_Name,
-      Date: this.state.Date
+      expectedTasks: this.state.tasks,
+      tasksToBeLearned: this.state.outcome,
+      externalSup: this.state.Ext_Sup_Name,
+      //Date: this.state.Date
     };
 
     // Add Employee details
     console.log("sss" + EmployeeData);
     axios
-      .post("http://localhost:8083/employee", EmployeeData)
+      .post("http://localhost:8083/employers", EmployeeData)
       .then(res => {
         console.log(EmployeeData);
         alert("employeeData Added");
@@ -83,15 +82,14 @@ class AddEmployeeDetails extends Component {
           address: "",
           supName: "",
           supTitle: "",
-          supPhone: "",
-          supEmail: "",
+          // supPhone: "",
+          // supEmail: "",
           startDate: "",
-          endDate: "",
+         // endDate: "",
           noOfHours: "",
-          tasks: "",
-          outcome: "",
-          Ext_Sup_Name: "",
-          Date: ""
+          expectedTasks: "",
+          tasksToBeLearned: "",
+          externalSup: "",
         });
       })
       .catch(err => {
