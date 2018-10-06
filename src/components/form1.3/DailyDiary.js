@@ -47,7 +47,7 @@ class DailyDiary extends Component {
             console.log(err);
           });
       }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
     onSubmit(e) {
         e.preventDefault();
 
