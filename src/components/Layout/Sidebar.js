@@ -23,10 +23,10 @@ class Sidebar extends Component {
               View Students
             </span>
           </Link>
-          <Link to="/viewStudents">
+          <Link to="/dailyDiary">
             <span className="text">
               <i class="fa fa-book" />
-              Student Diary
+              Daily Diary
             </span>
           </Link>
         </ul>

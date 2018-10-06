@@ -3,6 +3,7 @@ import NumericInput from "react-numeric-input";
 import FormatedTextField from "../common/FormatedTextField";
 import axios from "axios";
 import { RadioGroup, Radio } from "react-radio-group";
+
 class AddStudentDetails extends Component {
   constructor(props) {
     super(props);

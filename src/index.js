@@ -11,6 +11,8 @@ import Sidebar from "./components/Layout/Sidebar";
 import AddStudent from "./components/form1.1/AddStudentDetails";
 import AddEmployee from "./components/form1.1/AddEmployeeDetails";
 import ViewStudents from "./components/form1.1/ViewStudents";
+import DailyDiary from "./components/form1.3/DailyDiary";
+
 ReactDOM.render(
   <BrowserRouter>
     <div>
@@ -69,6 +71,26 @@ ReactDOM.render(
                 </div>
                 <div className="col-md-8">
                   <ViewStudents />
+                </div>
+              </div>
+              <Footer />
+            </div>
+          );
+        }}
+      />
+      <Route
+        exact
+        path="/dailyDiary"
+        render={() => {
+          return (
+            <div>
+              <Navbar />
+              <div className="row">
+                <div className="col-md-3">
+                  <Sidebar />
+                </div>
+                <div className="col-md-8">
+                  <DailyDiary />
                 </div>
               </div>
               <Footer />
