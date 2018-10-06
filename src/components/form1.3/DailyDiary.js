@@ -194,6 +194,7 @@ class DailyDiary extends Component {
                         <i>(To be filled by the Intern)</i>
                         <br></br>
                         <br></br>
+        //diary table interface
 
                       <form>
                       <center><h4>Internal Training Information</h4></center>
