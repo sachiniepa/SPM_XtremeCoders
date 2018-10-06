@@ -8,7 +8,7 @@ import FormatedTextField from "../common/FormatedTextField";
 import axios from "axios";
 
 class DailyDiary extends Component {
-
+//constructor of the daily diary
     constructor(props) {
         super(props);
         this.state = {
@@ -69,7 +69,8 @@ class DailyDiary extends Component {
             Period_to: this.state.Period_to
         };
     
-        // Add diary data
+        // Add diary data 
+        //Set data to the fields and send the data set using a post method
         console.log("sss" + diaryData);
         axios
           .post("http://localhost:8083/diary", diaryData,{'Content-Type': 'application/json'})
