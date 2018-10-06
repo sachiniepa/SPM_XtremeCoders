@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import FormatedTextField from "../common/FormatedTextField";
-// import FormatedList from "../common/FormatedList";
-// import moment from "moment";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+
 
 import axios from "axios";
+
+
 
 class DailyDiary extends Component {
 //constructor of the daily diary
@@ -23,7 +22,6 @@ class DailyDiary extends Component {
             To:"",
             Training_party:"",
             Training_desc:"",
-            Period_from:"",
             Period_to:""
         };
 
@@ -47,7 +45,7 @@ class DailyDiary extends Component {
             console.log(err);
           });
       }
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -65,8 +63,7 @@ class DailyDiary extends Component {
             To: this.state.To,
             Training_party: this.state.Training_party,
             Training_desc: this.state.Training_desc,
-            Period_from: this.state.Period_from,
-            Period_to: this.state.Period_to
+            Period_from: this.state.Period_from
         };
     
         // Add diary data 
@@ -91,8 +88,7 @@ class DailyDiary extends Component {
                 To:"",
                 Training_party:"",
                 Training_desc:"",
-                Period_from:"",
-                Period_to:""
+                Period_from:""
             });
           })
           .catch(err => {
@@ -196,8 +192,57 @@ class DailyDiary extends Component {
 
                             
                         <i>(To be filled by the Intern)</i>
+                        <br></br>
+                        <br></br>
 
+                       <form>
+                       <div class="row">
+                          <div class="form-group col-xs-6">
+                              {/* <label for="firstname" class="sr-only"></label>
+                              <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                                    title="Enter first name"
+                                    placeholder="First name"/> */}
+                                    <h5>Internal Training Information</h5>
+                          </div>        
+                       </div>
+
+                       <div class="row">
+                          <div class="form-group col-xs-6">
+                             <h6>Training Party</h6>
+                          </div>                            
+                          <div class="form-group col-xs-6">
+                             <h6>Training Description</h6>
+                          </div>
+                          <div class="form-group col-xs-6">
+                             <h6>Period From</h6>
+                          </div>
                          
+                      </div>
+
+                       <div class="row">
+                          <div class="form-group col-xs-6">
+                              <label for="firstname" class="sr-only"></label>
+                              <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                                    title="Enter first name"
+                                    placeholder="First name"/>
+                          </div>                            
+                          <div class="form-group col-xs-6">
+                              <label for="lastname" class="sr-only"></label>
+                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                                    title="Enter last name"
+                                    placeholder="Last name"/>
+                          </div>
+                          <div class="form-group col-xs-6">
+                              <label for="lastname" class="sr-only"></label>
+                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                                    title="Enter last name"
+                                    placeholder="Last name"/>
+                          </div>
+                         
+                      </div>
+                     
+                         
+                       </form>
 
                             <input
                             type="submit"
