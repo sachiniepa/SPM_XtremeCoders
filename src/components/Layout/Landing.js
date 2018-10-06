@@ -30,6 +30,7 @@ class Landing extends Component {
                     Admin Login
                   </a>
                 </Link>
+               
               </div>
             </div>
           </div>
