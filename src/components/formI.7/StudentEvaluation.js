@@ -13,8 +13,9 @@ class StudentEvaluation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name:"",
+        
         sid :"",
+        name:"",
         phone :"",
         email :"" ,
         EmployerName : "",
@@ -43,7 +44,7 @@ class StudentEvaluation extends Component {
     this.onChangeSpinnerProgress= this.onChangeSpinnerProgress.bind(this);
     this.onChangeSpinnerViva= this.onChangeSpinnerViva.bind(this);
     this.onChangeSpinnerIntern= this.onChangeSpinnerIntern.bind(this);
-    this.onChangeSpinnerDuration= this.onChangeSpinnerIntern.bind(this);
+    this.onChangeSpinnerDuration= this.onChangeSpinnerDuration.bind(this);
 
   }
 
@@ -108,9 +109,10 @@ class StudentEvaluation extends Component {
     e.preventDefault();
 
     const EvaluationData = {
-      ITNo: this.state.ITNo,
-        name:this.state.name,
+      
+        
         sid :this.state.sid,
+        name:this.state.name,
         phone :this.state.phone,
         email :this.state.email ,
         EmployerName :this.state.EmployerName,
@@ -132,16 +134,38 @@ class StudentEvaluation extends Component {
     };
 
     // Add Employee details
-    console.log("sss" + EvaluationData);
+
+    console.log("sss" + EvaluationData.sid);
+    console.log("sss" + EvaluationData.name);
+    console.log("sss" + EvaluationData.phone);
+    console.log("sss" + EvaluationData.email);
+    console.log("sss" + EvaluationData.EmployerName);
+    console.log("sss" + EvaluationData.SupName);
+    console.log("sss" + EvaluationData.dTitle);
+    console.log("sss" + EvaluationData.Specialization);
+    console.log("sss" + EvaluationData.duration);
+    console.log("sss" + EvaluationData.credits);
+    console.log("sss" + EvaluationData.IntTitle);
+    console.log("sss" + EvaluationData.comment1);
+    console.log("sss" + EvaluationData.comment2);
+    console.log("sss" + EvaluationData.mProgress);
+    console.log("sss" + EvaluationData.fProgress);
+    console.log("sss" + EvaluationData.Viva);
+    console.log("sss" + EvaluationData.Total);
+    console.log("sss" + EvaluationData.fGrade);
+    console.log("sss" + EvaluationData.ExName);
+    console.log("sss" + EvaluationData.Date);
+
     axios
-      .post("http://localhost:8083/evaluation", EvaluationData)
+      .post("http://localhost:8083/evaluation/", EvaluationData)
       .then(res => {
         console.log(EvaluationData);
         alert("Student Performance evaluation data Added");
 
         this.setState({
-            name:"",
+           
             sid :"",
+            name:"",
             phone :"",
             email :"" ,
             EmployerName : "",
@@ -159,7 +183,7 @@ class StudentEvaluation extends Component {
             Total :"",
             fGrade :"",
             ExName :"" ,
-            Date :""
+            Date :moment()
         });
       })
       .catch(err => {
@@ -188,8 +212,8 @@ class StudentEvaluation extends Component {
   render() {
     const itNumbers = this.state.itData.map(item => {
       return {
-        label: item.sid,
-        value: item.sid
+        label: item.ITNo,
+        value: item.ITNo
       };
     });
     return (
@@ -240,8 +264,8 @@ class StudentEvaluation extends Component {
                   />
                 <FormatedTextField
                   placeholder="Supervisor's Name"
-                  name="supName"
-                  value={this.state.supName}
+                  name="SupName"
+                  value={this.state.SupName}
                   onChange={this.onChange}
                   info="Supervisor's Name"
                 />
@@ -375,6 +399,9 @@ class StudentEvaluation extends Component {
                       dateFormat="DD-MM-YYYY"
                   />
                
+ 
+
+
 
                 <input
                   type="submit"
