@@ -3,6 +3,7 @@ import FormatedTextField from "../common/FormatedTextField";
 
 
 import axios from "axios";
+import FormatedList from "../common/FormatedList";
 
 
 
@@ -23,7 +24,8 @@ class DailyDiary extends Component {
             Training_party:"",
             Training_desc:"",
             Period_from:"",
-            Period_to:""
+            Period_to:"",
+            itData: []
         };
 
         this.onChange = this.onChange.bind(this);
@@ -45,6 +47,19 @@ class DailyDiary extends Component {
           .catch(err => {
             console.log(err);
           });
+
+        axios
+            .get("http://localhost:8083/student/")
+            .then(Response => {
+                var data = Response.data;
+                this.setState({
+                    itData: data
+                });
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
       }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
     onSubmit(e) {
@@ -102,11 +117,59 @@ class DailyDiary extends Component {
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+        console.log(e.target.name);
+        if(e.target.name === "ITNo"){
+            console.log(e.target.name);
+            console.log(this.state.name);
+            axios
+                .get("http://localhost:8083/student?ITNo="+e.target.value)
+                .then(Response => {
+                    var data = Response.data;
+                    console.log(data[0].name);
+                    this.setState({
+                        name: data[0].name,
+                        address: data[0].address,
+                        contactNo: data[0].mobileNo,
+                        email: data[0].email
+                    });
+                    //console.log(this.state.name);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
         console.log("onchange");
       }
 
 
+      // getStudentDetails(e){
+      //     //e.preventDefault();
+      //     this.setState({ [e.target.name]: e.target.value });
+      //     axios
+      //         .get("http://localhost:8083/student?ITNo="+e.target.value)
+      //         .then(Response => {
+      //             var data = Response.data;
+      //             console.log(data);
+      //             this.setState({
+      //                 name: data.name,
+      //                 address: data.address,
+      //                 contactNo: data.mobileNo,
+      //                 email: data.email
+      //             });
+      //             console.log(data);
+      //         })
+      //         .catch(err => {
+      //             console.log(err);
+      //         });
+      //
+      // }
     render () {
+        const itNumbers = this.state.itData.map(item => {
+            return {
+                label: item.ITNo,
+                value: item.ITNo,
+            };
+        });
 
         return (
 
@@ -125,19 +188,20 @@ class DailyDiary extends Component {
 
                         <h5>Intern's Information</h5>
 
+                        <FormatedList
+                            placeholder="IT Number"
+                            name="ITNo"
+                            value={this.state.ITNo}
+                            onChange={this.onChange}
+                            options={itNumbers}
+                            info="IT Number"
+                        />
                           <FormatedTextField
                             placeholder="Intern's Name"
                             name="name"
                             value={this.state.name}
                             onChange={this.onChange}
                             info="Intern's Name"
-                            />
-                            <FormatedTextField
-                            placeholder="Student ID"
-                            name="ITNo"
-                            value={this.state.ITNo}
-                            onChange={this.onChange}
-                            info="Student ID"
                             />
                             <FormatedTextField
                             placeholder="Intern's Private Address"
