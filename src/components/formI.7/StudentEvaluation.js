@@ -39,8 +39,14 @@ class StudentEvaluation extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleMfg = this.handleMfg.bind(this);
+    this.calTot = this.calTot.bind(this);
+    this.onChangeSpinnerProgress= this.onChangeSpinnerProgress.bind(this);
+    this.onChangeSpinnerViva= this.onChangeSpinnerViva.bind(this);
+    this.onChangeSpinnerIntern= this.onChangeSpinnerIntern.bind(this);
+    this.onChangeSpinnerDuration= this.onChangeSpinnerIntern.bind(this);
 
   }
+
   componentDidMount() {
     axios
       .get("http://localhost:8083/student/")
@@ -56,6 +62,11 @@ class StudentEvaluation extends Component {
       });
   }
 
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
     handleMfg(date) {
         this.setState({
             Date: date
@@ -67,8 +78,33 @@ class StudentEvaluation extends Component {
             credits : num
         });
     }
+    onChangeSpinnerProgress(num) {
+        this.setState({
+            mProgress : num
+        });
+    }
+    onChangeSpinnerIntern(num) {
+        this.setState({
+            fProgress : num
+        });
+    }
+    onChangeSpinnerViva(num) {
+        this.setState({
+            Viva : num
+        });
+    }
 
-  onSubmit(e) {
+
+    onChangeSpinnerDuration(num) {
+        this.setState({
+            duration: num
+        });
+    }
+
+
+
+
+    onSubmit(e) {
     e.preventDefault();
 
     const EvaluationData = {
@@ -131,9 +167,6 @@ class StudentEvaluation extends Component {
       });
   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
 
   // onChangeSpinnerHrs(num) {
   //   this.setState({
@@ -141,12 +174,16 @@ class StudentEvaluation extends Component {
   //   });
   // }
 
-
-    onChangeSpinnerCgpa(num) {
-        this.setState({
-            duration: num
-        });
+    calTot(e) {
+       const a = this.state.mProgress;
+        const b = this.state.fProgress;
+        const c = this.state.Viva;
+        const tot =a+ b+c;
+        this.setState({ Total: tot });
     }
+
+
+
 
   render() {
     const itNumbers = this.state.itData.map(item => {
@@ -224,12 +261,15 @@ class StudentEvaluation extends Component {
                       info="Specialization"
                   />
 
-                  <FormatedTextField
-                      placeholder="Duration"
+                  <small className="form-text text-muted">
+                      Duration(in Months)
+                  </small>
+                  <NumericInput
                       name="duration"
+                      min={0}
+                      max={100}
                       value={this.state.duration}
-                      onChange={this.onChange}
-                      info="Duration"
+                      onChange={this.onChangeSpinnerDuration}
                   />
                
                 <FormatedTextField
@@ -262,34 +302,53 @@ class StudentEvaluation extends Component {
                   />
 
 
-                <FormatedTextField
-                  placeholder="Monthly progress(30%)"
-                  name="tasks"
-                  value={this.state.mProgress}
-                  onChange={this.onChange}
-                  info="monthly progress"
-                />
-                  <FormatedTextField
-                      placeholder="Internship report(30%)"
-                      name="fProgress"
-                      value={this.state.fProgress}
-                      onChange={this.onChange}
-                      info="Internship report"
+                  <small className="form-text text-muted">
+                     Monthly Progress(30%)
+                  </small>
+                  <NumericInput
+                      name="mProgress"
+                      min={0}
+                      max={30}
+                      value={this.state.mProgress}
+                      onChange={this.onChangeSpinnerProgress}
                   />
-                <FormatedTextField
-                  placeholder="Viva(40%)"
-                  name="Viva"
-                  value={this.state.Viva}
-                  onChange={this.onChange}
-                  info="Viva"
-                />
+                  <small className="form-text text-muted">
+                      Internship Report(30%)
+                  </small>
+                  <NumericInput
+                      name="fProgress"
+                      min={0}
+                      max={30}
+                      value={this.state.fProgress}
+                      onChange={this.onChangeSpinnerIntern}
+                  />
 
-                <FormatedTextField
+                  <small className="form-text text-muted">
+                      Viva(40%)
+                  </small>
+                  <NumericInput
+                      name="Viva"
+                      min={0}
+                      max={40}
+                      value={this.state.Viva}
+                      onChange={this.onChangeSpinnerViva}
+                  />
+
+                  <input
+                      type="calTot"
+                      value="Calculate Total"
+                      className="btn btn-primary btn-lg
+                  mt-4 "
+                      onClick={this.calTot}
+                  />
+
+
+                  <FormatedTextField
                   placeholder="Total"
                   name="Total"
                   value={this.state.Total}
                   onChange={this.onChange}
-                  info="tolal"
+                  info="Tolal"
                 />
                   <FormatedTextField
                       placeholder="Grade"

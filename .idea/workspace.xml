@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ac8492f-9bb3-4147-93e3-f1128b1f1f53" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/formI.7/StudentEvaluation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/formI.7/StudentEvaluation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -87,12 +83,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1470" />
+          <entry key="js" value="1733" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="1470" />
+          <entry key="JavaScript" value="1733" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -104,8 +100,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/formI.7/StudentEvaluation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="314" column="32" selection-start-line="314" selection-start-column="32" selection-end-line="314" selection-end-column="32" />
+            <state relative-caret-position="845">
+              <caret line="271" column="60" selection-start-line="271" selection-start-column="60" selection-end-line="271" selection-end-column="60" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -242,8 +238,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="50" />
+    <option name="x" value="533" />
+    <option name="y" value="2" />
     <option name="width" value="775" />
     <option name="height" value="735" />
   </component>
@@ -343,12 +339,12 @@
       <workItem from="1536432130564" duration="1867000" />
       <workItem from="1536461541006" duration="1276000" />
       <workItem from="1538840805369" duration="7273000" />
-      <workItem from="1538869998397" duration="3447000" />
+      <workItem from="1538869998397" duration="5806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27046000" />
+    <option name="totallyTimeSpent" value="29405000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -476,15 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/common/FormatedList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/form1.1/AddStudentDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2023">
@@ -505,10 +492,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/common/FormatedList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/formI.7/StudentEvaluation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="314" column="32" selection-start-line="314" selection-start-column="32" selection-end-line="314" selection-end-column="32" />
+        <state relative-caret-position="845">
+          <caret line="271" column="60" selection-start-line="271" selection-start-column="60" selection-end-line="271" selection-end-column="60" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
