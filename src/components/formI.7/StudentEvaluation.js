@@ -38,6 +38,7 @@ class StudentEvaluation extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onChange2 = this.onChange2.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleMfg = this.handleMfg.bind(this);
     this.calTot = this.calTot.bind(this);
@@ -66,6 +67,30 @@ class StudentEvaluation extends Component {
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+    }
+    onChange2(e) {
+        this.setState({ [e.target.name]: e.target.value });
+        console.log(e.target.name);
+        if(e.target.name === "sid"){
+            console.log(e.target.name);
+            console.log(this.state.name);
+            axios
+                .get("http://localhost:8083/student?ITNo="+e.target.value)
+                .then(Response => {
+                    var data = Response.data;
+                    console.log(data[0].name);
+                    this.setState({
+                        name: data[0].name,
+                        phone: data[0].mobileNo,
+                        email: data[0].email
+                    });
+                    //console.log(this.state.name);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+        console.log("onchange");
     }
 
     handleMfg(date) {
@@ -204,6 +229,31 @@ class StudentEvaluation extends Component {
         const c = this.state.Viva;
         const tot =a+ b+c;
         this.setState({ Total: tot });
+        if (tot>=90) {
+            this.setState({ fGrade: "+A" });
+        } else if (tot>=75) {
+            this.setState({ fGrade: "A" });
+        }  else if (tot>=70) {
+            this.setState({ fGrade: "B+" });
+        } 
+        else if (tot>=65) {
+            this.setState({ fGrade: "B" });
+        } 
+        else if (tot>=60) {
+            this.setState({ fGrade: "B-" });
+        } 
+        else if (tot>=55) {
+            this.setState({ fGrade: "C+" });
+        } 
+        else if (tot>=50) {
+            this.setState({ fGrade: "C" });
+        }
+        else if (tot>=45) {
+            this.setState({ fGrade: "C-" });
+        }
+        else {
+            this.setState({ fGrade: "F" });
+        }
     }
 
 
@@ -229,7 +279,7 @@ class StudentEvaluation extends Component {
                   placeholder="Student ID"
                   name="sid"
                   value={this.state.sid}
-                  onChange={this.onChange}
+                  onChange={this.onChange2}
                   options={itNumbers}
                   info="Student Id"
                 />
