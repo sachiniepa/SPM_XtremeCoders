@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import NumericInput from "react-numeric-input";
 import FormatedTextField from "../common/FormatedTextField";
 import FormatedList from "../common/FormatedList";
-import moment from "moment";
 import DatePicker from "react-datepicker";
+import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -32,14 +32,14 @@ class StudentEvaluation extends Component {
         Total :"",
         fGrade :"",
         ExName :"" ,
-        Date :"",
+        Date : moment(),
         itData: []
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleMfg = this.handleMfg.bind(this);
 
-    // this.onChangeSpinnerHrs = this.onChangeSpinnerHrs.bind(this);
   }
   componentDidMount() {
     axios
@@ -55,6 +55,18 @@ class StudentEvaluation extends Component {
         console.log(err);
       });
   }
+
+    handleMfg(date) {
+        this.setState({
+            Date: date
+        });
+    }
+
+    onChangeSpinnerCredits(num) {
+        this.setState({
+            credits : num
+        });
+    }
 
   onSubmit(e) {
     e.preventDefault();
@@ -128,13 +140,6 @@ class StudentEvaluation extends Component {
   //     noOfHours: num
   //   });
   // }
-
-
-    onChangeSpinnerCredits(num) {
-        this.setState({
-            credits: num
-        });
-    }
 
 
     onChangeSpinnerCgpa(num) {
@@ -219,67 +224,61 @@ class StudentEvaluation extends Component {
                       info="Specialization"
                   />
 
-                  <small className="form-text text-muted">Duration(month)</small>
-                  <NumericInput
+                  <FormatedTextField
+                      placeholder="Duration"
                       name="duration"
-                      min={1}
-                      max={24}
-                      step={1}
-                      precision={1}
                       value={this.state.duration}
-                      onChange={this.onChangeSpinnerCgpa}
+                      onChange={this.onChange}
+                      info="Duration"
                   />
                
                 <FormatedTextField
                   placeholder="Internship Title"
-                  name="intern"
+                  name="IntTitle"
                   value={this.state.IntTitle}
                   onChange={this.onChange}
                   info="Internship title"
                 />
-                  <small className="form-text text-muted">Duration(month)</small>
-                  <NumericInput
+                  <FormatedTextField
+                      placeholder="Credits"
                       name="credits"
-                      min={0}
-                      max={100.0}
-                      step={0.1}
-                      precision={0}
                       value={this.state.credits}
-                      onChange={this.onChangeSpinnerCredids}
+                      onChange={this.onChange}
+                      info="Credits"
                   />
                   <FormatedTextField
-                      placeholder="Comment 1"
+                      placeholder="Comment"
                       name="comment1"
                       value={this.state.comment1}
                       onChange={this.onChange}
-                      info="comment 1"
+                      info="comments on how the internship benefited the student"
                   />
                   <FormatedTextField
-                      placeholder="Comment 2"
+                      placeholder="Comment"
                       name="comment2"
                       value={this.state.comment2}
                       onChange={this.onChange}
-                      info="comment 2"
+                      info="comments on how the student performed including observations on the report"
                   />
 
 
                 <FormatedTextField
-                  placeholder="Monthly progress"
+                  placeholder="Monthly progress(30%)"
                   name="tasks"
                   value={this.state.mProgress}
                   onChange={this.onChange}
                   info="monthly progress"
                 />
                   <FormatedTextField
-                      placeholder="Internship report"
-                      name="intenReport"
+                      placeholder="Internship report(30%)"
+                      name="fProgress"
                       value={this.state.fProgress}
                       onChange={this.onChange}
                       info="Internship report"
                   />
                 <FormatedTextField
-                  placeholder="Viva"
-                  name="viva"
+                  placeholder="Viva(40%)"
+                  name="Viva"
                   value={this.state.Viva}
                   onChange={this.onChange}
                   info="Viva"
@@ -287,14 +286,14 @@ class StudentEvaluation extends Component {
 
                 <FormatedTextField
                   placeholder="Total"
-                  name="total"
+                  name="Total"
                   value={this.state.Total}
                   onChange={this.onChange}
                   info="tolal"
                 />
                   <FormatedTextField
                       placeholder="Grade"
-                      name="grade"
+                      name="fGrade"
                       value={this.state.fGrade}
                       onChange={this.onChange}
                       info="Final Grade"
@@ -302,19 +301,20 @@ class StudentEvaluation extends Component {
                   <FormatedTextField
                       placeholder="Examiners Name"
                       name="ExName"
-                      value={this.state.fGrade}
+                      value={this.state.ExName}
                       onChange={this.onChange}
-                      info="ExName"
+                      info="Examiners Name"
                   />
 
-                  <FormatedTextField
-                      placeholder="Date"
+                  <small className="form-text text-muted">Date</small>
+                  <DatePicker
                       name="Date"
                       value={this.state.Date}
-                      onChange={this.onChange}
+                      selected={this.state.Date}
+                      onChange={this.handleMfg}
                       info="Date"
+                      dateFormat="DD-MM-YYYY"
                   />
-
                
 
                 <input
