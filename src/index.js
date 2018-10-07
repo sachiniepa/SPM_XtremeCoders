@@ -12,6 +12,7 @@ import AddStudent from "./components/form1.1/AddStudentDetails";
 import AddEmployee from "./components/form1.1/AddEmployeeDetails";
 import ViewStudents from "./components/form1.1/ViewStudents";
 import DailyDiary from "./components/form1.3/DailyDiary";
+import StudentEvaluation from "./components/formI.7/StudentEvaluation";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -98,6 +99,27 @@ ReactDOM.render(
           );
         }}
       />
+
+        <Route
+            exact
+            path="/evaluation"
+            render={() => {
+                return (
+                    <div>
+                        <Navbar />
+                        <div className="row">
+                            <div className="col-md-3">
+                                <Sidebar />
+                            </div>
+                            <div className="col-md-8">
+                                <StudentEvaluation />
+                            </div>
+                        </div>
+                        <Footer />
+                    </div>
+                );
+            }}
+        />
     </div>
   </BrowserRouter>,
   document.getElementById("root")

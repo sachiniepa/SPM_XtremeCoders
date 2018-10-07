@@ -29,6 +29,12 @@ class Sidebar extends Component {
               Daily Diary
             </span>
           </Link>
+            <Link to="/evaluation">
+            <span className="text">
+              <i className="fas fa-user-edit"/>
+              Performance Evaluation
+            </span>
+            </Link>
         </ul>
       </div>
     );

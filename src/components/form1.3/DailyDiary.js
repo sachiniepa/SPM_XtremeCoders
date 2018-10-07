@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import FormatedTextField from "../common/FormatedTextField";
-
-
-import axios from "axios";
 import FormatedList from "../common/FormatedList";
 
+import axios from "axios";
 
 
 class DailyDiary extends Component {
@@ -26,6 +24,7 @@ class DailyDiary extends Component {
             Period_from:"",
             Period_to:"",
             itData: []
+
         };
 
         this.onChange = this.onChange.bind(this);
@@ -61,7 +60,7 @@ class DailyDiary extends Component {
                 console.log(err);
             });
       }
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -79,8 +78,7 @@ class DailyDiary extends Component {
             To: this.state.To,
             Training_party: this.state.Training_party,
             Training_desc: this.state.Training_desc,
-            Period_from: this.state.Period_from,
-            Period_to: this.state.Period_to
+            Period_from: this.state.Period_from
         };
     
         // Add diary data 
@@ -105,8 +103,7 @@ class DailyDiary extends Component {
                 To:"",
                 Training_party:"",
                 Training_desc:"",
-                Period_from:"",
-                Period_to:""
+                Period_from:""
             });
           })
           .catch(err => {
@@ -259,31 +256,224 @@ class DailyDiary extends Component {
 
                             
                         <i>(To be filled by the Intern)</i>
+                        <br></br>
+                        <br></br>
+        //diary table interface
 
-                       <form>
-                       <div class="row">
-                          <div class="form-group col-xs-6">
-                              <label for="firstname" class="sr-only"></label>
-                              <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-                                    title="Enter first name"
-                                    placeholder="First name"/>
-                          </div>                            
-                          <div class="form-group col-xs-6">
-                              <label for="lastname" class="sr-only"></label>
-                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-                                    title="Enter last name"
-                                    placeholder="Last name"/>
-                          </div>
-                          <div class="form-group col-xs-6">
-                              <label for="lastname" class="sr-only"></label>
-                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-                                    title="Enter last name"
-                                    placeholder="Last name"/>
-                          </div>
-                      </div>
-                     
+                      <form>
+                      <center><h4>Internal Training Information</h4></center>
+                      <br></br>
+                        <table>
                          
-                       </form>
+                          <tr>
+                            <td>
+                            <div>
+                          
+                              <center> <h6>Training Party</h6>  </center>
+                              
+                            </div>
+                            </td>
+                            <td>
+                            <div>
+                              
+                              <center> <h6>Training Description</h6>  </center>
+                               
+                            </div>
+                            </td>
+                            <td>
+                            <div>
+                                
+                                        <h6>Period From</h6>
+                               
+                            </div>
+                            </td>                           
+                          </tr>
+                          <tr>
+                            <td>
+                            <div>
+                          
+                                <FormatedTextField
+                                  placeholder="Training Party"
+                                  name="Training Party"
+                                  value={this.state.Training_party}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                           
+                          </div>
+                            </td>
+                            <td>
+                            <div >
+                          
+                                <FormatedTextField
+                                  placeholder="Training Description"
+                                  name="Training Description"
+                                  value={this.state.Training_desc}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                         
+                          </div>
+                            </td>
+                            <td>
+                            <div>
+                                  <FormatedTextField
+                                    placeholder="Period From"
+                                    name="Period From"
+                                    value={this.state.Period_from}
+                                    onChange={this.onChange}
+                                    
+                                    />
+                          </div> 
+                            </td>
+                          </tr>
+
+                         <tr>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Party"
+                                  name="Training Party"
+                                  value={this.state.Training_party}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div> 
+                            </td>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Description"
+                                  name="Training Description"
+                                  value={this.state.Training_desc}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div> 
+                            </td>
+                            <td>
+                            <div>
+                                  <FormatedTextField
+                                    placeholder="Period From"
+                                    name="Period From"
+                                    value={this.state.Period_from}
+                                    onChange={this.onChange}
+                                    
+                                    />
+                          </div> 
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Party"
+                                  name="Training Party"
+                                  value={this.state.Training_party}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div>
+                            </td>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Description"
+                                  name="Training Description"
+                                  value={this.state.Training_desc}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div>
+                            </td>
+                            <td>
+                            <div>
+                                  <FormatedTextField
+                                    placeholder="Period From"
+                                    name="Period From"
+                                    value={this.state.Period_from}
+                                    onChange={this.onChange}
+                                    
+                                    />
+                          </div> 
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Party"
+                                  name="Training Party"
+                                  value={this.state.Training_party}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div> 
+                            </td>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Description"
+                                  name="Training Description"
+                                  value={this.state.Training_desc}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div> 
+                            </td>
+                            <td>
+                            <div>
+                                  <FormatedTextField
+                                    placeholder="Period From"
+                                    name="Period From"
+                                    value={this.state.Period_from}
+                                    onChange={this.onChange}
+                                    
+                                    />
+                          </div> 
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Party"
+                                  name="Training Party"
+                                  value={this.state.Training_party}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div> 
+                            </td>
+                            <td>
+                            <div>
+                                <FormatedTextField
+                                  placeholder="Training Description"
+                                  name="Training Description"
+                                  value={this.state.Training_desc}
+                                  onChange={this.onChange}
+                                  
+                                  />
+                          </div>
+                            </td>
+                            <td>
+                            <div>
+                                  <FormatedTextField
+                                    placeholder="Period From"
+                                    name="Period From"
+                                    value={this.state.Period_from}
+                                    onChange={this.onChange}
+                                    
+                                    />
+                          </div> 
+                            </td>
+                          </tr>
+                         
+                        </table>
+                        </form>
 
                             <input
                             type="submit"
