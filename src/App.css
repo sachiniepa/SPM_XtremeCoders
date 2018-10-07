@@ -358,3 +358,8 @@ li:not(.active):hover a {
 .topnav ul {
   display: inline-block;
 }
+
+.reg_name {
+  max-width:200px;
+}
+

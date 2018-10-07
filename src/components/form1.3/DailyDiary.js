@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import FormatedTextField from "../common/FormatedTextField";
-// import FormatedList from "../common/FormatedList";
-// import moment from "moment";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+
 
 import axios from "axios";
+
+
 
 class DailyDiary extends Component {
 
@@ -196,7 +195,30 @@ class DailyDiary extends Component {
                             
                         <i>(To be filled by the Intern)</i>
 
+                       <form>
+                       <div class="row">
+                          <div class="form-group col-xs-6">
+                              <label for="firstname" class="sr-only"></label>
+                              <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                                    title="Enter first name"
+                                    placeholder="First name"/>
+                          </div>                            
+                          <div class="form-group col-xs-6">
+                              <label for="lastname" class="sr-only"></label>
+                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                                    title="Enter last name"
+                                    placeholder="Last name"/>
+                          </div>
+                          <div class="form-group col-xs-6">
+                              <label for="lastname" class="sr-only"></label>
+                              <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
+                                    title="Enter last name"
+                                    placeholder="Last name"/>
+                          </div>
+                      </div>
+                     
                          
+                       </form>
 
                             <input
                             type="submit"
